@@ -1,0 +1,9 @@
+views.display_extender.localgov_page_header_display_extender:
+  type: views_display_extender
+  mapping:
+    lede:
+      type: text
+      label: 'Lede'
+    tokenize:
+      type: boolean
+      label: 'Should replacement tokens be used from the first row'

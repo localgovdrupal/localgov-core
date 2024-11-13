@@ -14,6 +14,8 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\localgov_core\Event\PageHeaderDisplayEvent;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -130,6 +132,7 @@ class PageHeaderBlock extends BlockBase implements ContainerFactoryPluginInterfa
     $route = $this->currentRouteMatch->getRouteObject();
     if (!is_null($route)) {
       $parameters = $route->getOption('parameters');
+      $defaults = $route->getDefaults();
       if (!is_null($parameters)) {
         foreach ($parameters as $name => $options) {
           if (!isset($options['type'])) {
@@ -150,6 +153,13 @@ class PageHeaderBlock extends BlockBase implements ContainerFactoryPluginInterfa
             $this->entity = $entity;
             break;
           }
+        }
+      }
+      if (isset($defaults['view_id']) && isset($defaults['display_id'])) {
+        $view = Views::getView($defaults['view_id']);
+        if ($view) {
+          $view->setDisplay($defaults['display_id']);
+          $this->entity = $view;
         }
       }
     }
@@ -221,6 +231,18 @@ class PageHeaderBlock extends BlockBase implements ContainerFactoryPluginInterfa
         '#type' => 'html_tag',
         '#tag' => 'p',
         '#value' => $this->t('All pages relating to @label.', ['@label' => strtolower($this->entity->label())]),
+      ];
+    }
+
+    // Return view custom summary.
+    if ($this->entity instanceof ViewExecutable) {
+      $extender = $this->entity->getDisplay()->getExtenders()['localgov_page_header_display_extender'] ?? NULL;
+      $this->entity->render();
+      $lede = $extender->getLede();
+      return [
+        '#type' => 'html_tag',
+        '#tag' => 'p',
+        '#value' => $lede,
       ];
     }
 
