@@ -11,7 +11,7 @@ use Drupal\views\ViewExecutable;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Metatag display extender plugin.
+ * Localgov page header display extender plugin.
  *
  * @ingroup views_display_extender_plugins
  *
