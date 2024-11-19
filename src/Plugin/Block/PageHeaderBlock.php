@@ -178,12 +178,12 @@ class PageHeaderBlock extends BlockBase implements ContainerFactoryPluginInterfa
 
     // If an entity is set, pass to the event.
     if ($this->entity instanceof EntityInterface) {
-      $event->setEntity($entity);
+      $event->setEntity($this->entity);
     }
 
     // If a view is set, pass to the event.
     if ($this->view instanceof ViewExecutable) {
-      $event->setView($view);
+      $event->setView($this->view);
     }
 
     // Dispatch event.
@@ -259,6 +259,8 @@ class PageHeaderBlock extends BlockBase implements ContainerFactoryPluginInterfa
     // Return view custom summary.
     if ($this->view instanceof ViewExecutable) {
       $extender = $this->view->getDisplay()->getExtenders()['localgov_page_header_display_extender'] ?? NULL;
+
+      // Need to render view to apply tokens.
       $this->view->render();
       $lede = $extender->getLede();
       return [
