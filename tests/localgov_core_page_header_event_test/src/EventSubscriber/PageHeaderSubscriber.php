@@ -17,7 +17,7 @@ class PageHeaderSubscriber implements EventSubscriberInterface {
   /**
    * {@inheritdoc}
    */
-  public static function getSubscribedEvents() {
+  public static function getSubscribedEvents(): array {
     return [
       PageHeaderDisplayEvent::EVENT_NAME => ['setPageHeader', 0],
     ];
