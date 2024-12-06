@@ -24,7 +24,7 @@ class OnOffSwitchTest extends BrowserTestBase {
   /**
    * Data provider for testOnOffSwitch().
    */
-  public static function onOffProvider() {
+  public static function onOffProvider(): \Generator {
     yield [TRUE, TRUE];
     yield [FALSE, FALSE];
   }
