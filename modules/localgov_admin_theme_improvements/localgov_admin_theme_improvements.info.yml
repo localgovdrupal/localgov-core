@@ -2,4 +2,4 @@ name: LocalGov Admin Theme Improvements
 type: module
 description: 'Small items to fix issues with the admin theme.'
 package: LocalGov Drupal
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^10 || ^11
