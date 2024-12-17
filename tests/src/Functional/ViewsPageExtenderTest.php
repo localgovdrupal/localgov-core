@@ -34,15 +34,6 @@ class ViewsPageExtenderTest extends BrowserTestBase {
    */
   protected function setUp(): void {
     parent::setUp();
-
-    // Enable localgov_page_header_display_extender plugin.
-    // @todo do this in the module install.
-    $config = \Drupal::service('config.factory')->getEditable('views.settings');
-    $display_extenders = $config->get('display_extenders') ?: [];
-    $display_extenders[] = 'localgov_page_header_display_extender';
-    $config->set('display_extenders', $display_extenders);
-    $config->save();
-
     $this->drupalPlaceBlock('localgov_page_header_block');
   }
 

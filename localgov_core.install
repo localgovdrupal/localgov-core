@@ -8,6 +8,13 @@
 use Drupal\localgov_core\FieldRenameHelper;
 
 /**
+ * Implements hook_install().
+ */
+function localgov_core_install() {
+  _localgov_core_enabled_views_page_display_extender();
+}
+
+/**
  * Update Field names for localgov_core provided fields.
  *
  * Field mapping between existing and new names:
@@ -93,5 +100,23 @@ function localgov_core_update_8004() {
   $config->set('display.page_2.display_options.path', 'admin/content/media/files/usage/%');
 
   // Save the configuration.
+  $config->save();
+}
+
+/**
+ * Enables the views page header display extender.
+ */
+function localgov_core_update_8005() {
+  _localgov_core_enabled_views_page_display_extender();
+}
+
+/**
+ * Enable localgov_page_header_display_extender plugin.
+ */
+function _localgov_core_enabled_views_page_display_extender() {
+  $config = \Drupal::service('config.factory')->getEditable('views.settings');
+  $display_extenders = $config->get('display_extenders') ?: [];
+  $display_extenders[] = 'localgov_page_header_display_extender';
+  $config->set('display_extenders', $display_extenders);
   $config->save();
 }
