@@ -37,7 +37,7 @@ class PageHeaderDisplayExtender extends DisplayExtenderPluginBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    /** @var \Drupal\metatag_views\Plugin\views\display_extender\MetatagDisplayExtender */
+    /** @var \Drupal\localgov_core\Plugin\views\display_extender\PageHeaderDisplayExtender */
     $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
 
     return $instance;
