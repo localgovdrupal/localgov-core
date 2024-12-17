@@ -20,31 +20,18 @@ filters:
     status: true
     weight: -44
     settings: {  }
-  filter_autop:
-    id: filter_autop
-    provider: filter
-    status: true
-    weight: -43
-    settings: {  }
-  filter_html_image_secure:
-    id: filter_html_image_secure
-    provider: filter
-    status: false
-    weight: -40
-    settings: {  }
   filter_align:
     id: filter_align
     provider: filter
     status: true
     weight: -49
     settings: {  }
-  filter_url:
-    id: filter_url
+  filter_autop:
+    id: filter_autop
     provider: filter
-    status: false
-    weight: -41
-    settings:
-      filter_url_length: 72
+    status: true
+    weight: -43
+    settings: {  }
   filter_caption:
     id: filter_caption
     provider: filter
@@ -57,21 +44,34 @@ filters:
     status: true
     weight: -47
     settings:
-      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ol type start> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <p class="alert alert-info alert-danger alert-primary alert-success callout callout-primary callout-success callout-danger callout-teal callout-carbon callout-yellow"> <h1> <pre> <mark> <a href hreflang data-entity-substitution data-entity-type data-entity-uuid title class="external-link pdf-link btn btn-start col-sm-6 mt-3"> <ul type class="list-checked"> <u> <img src alt data-entity-type data-entity-uuid data-align data-caption> <drupal-media data-entity-type data-entity-uuid data-view-mode data-align data-caption alt title> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr>'
+      allowed_html: '<br> <code> <pre> <p class="alert alert-info alert-danger alert-fail alert-success callout callout-primary callout-success callout-danger callout-teal callout-carbon callout-yellow"> <h1> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <a class="external-link pdf-link btn btn-start" hreflang title href data-entity-type data-entity-uuid data-entity-substitution> <ul class="list-checked" type> <cite> <dl> <dt> <dd> <mark> <blockquote cite> <ol type start> <img data-entity-type data-entity-uuid data-caption src alt height width data-align> <drupal-media data-caption title data-entity-type data-entity-uuid alt data-view-mode data-align> <span dir> <strong> <em> <u> <li> <table> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption>'
       filter_html_help: true
       filter_html_nofollow: false
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: true
-    weight: -48
-    settings: {  }
   filter_html_escape:
     id: filter_html_escape
     provider: filter
     status: false
     weight: -45
     settings: {  }
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: -40
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: -48
+    settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: false
+    weight: -41
+    settings:
+      filter_url_length: 72
   linkit:
     id: linkit
     provider: linkit
@@ -86,13 +86,13 @@ filters:
     weight: -46
     settings:
       default_view_mode: responsive_3x2
-      allowed_media_types:
-        document: document
-        image: image
-        remote_video: remote_video
       allowed_view_modes:
         default: default
         medium_8_7: medium_8_7
         responsive_3x2: responsive_3x2
         scale_crop_7_3_large: scale_crop_7_3_large
         square: square
+      allowed_media_types:
+        document: document
+        image: image
+        remote_video: remote_video
