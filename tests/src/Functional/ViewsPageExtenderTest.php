@@ -40,7 +40,7 @@ class ViewsPageExtenderTest extends BrowserTestBase {
   /**
    * Test block display.
    */
-  public function testViewWithPageHeadeExtender() {
+  public function testViewWithPageHeadeExtender(): void {
 
     // Check node title and summary display on a page.
     $this->createContentType(['type' => 'page']);

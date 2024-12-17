@@ -58,7 +58,7 @@ class PageHeaderDisplayExtender extends DisplayExtenderPluginBase {
   /**
    * Provide a form to edit options for this plugin.
    */
-  public function buildOptionsForm(&$form, FormStateInterface $form_state) {
+  public function buildOptionsForm(&$form, FormStateInterface $form_state): void {
 
     if ($form_state->get('section') == 'page_header') {
       $form['#title'] .= $this->t('The page header summary');
@@ -77,7 +77,7 @@ class PageHeaderDisplayExtender extends DisplayExtenderPluginBase {
   /**
    * Handle any special handling on the validate form.
    */
-  public function submitOptionsForm(&$form, FormStateInterface $form_state) {
+  public function submitOptionsForm(&$form, FormStateInterface $form_state): void {
     if ($form_state->get('section') == 'page_header') {
       // Process submitted metatag values and remove empty tags.
       $page_header_values = $form_state->cleanValues()->getValues();
@@ -90,7 +90,7 @@ class PageHeaderDisplayExtender extends DisplayExtenderPluginBase {
   /**
    * Verbatim copy of TokenizeAreaPluginBase::tokenForm().
    */
-  public function tokenForm(&$form, FormStateInterface $form_state) {
+  public function tokenForm(&$form, FormStateInterface $form_state): void {
     $form['tokenize'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Use replacement tokens from the first row'),
@@ -147,7 +147,7 @@ class PageHeaderDisplayExtender extends DisplayExtenderPluginBase {
    *
    * This output is returned as an array.
    */
-  public function optionsSummary(&$categories, &$options) {
+  public function optionsSummary(&$categories, &$options): void {
     $categories['page_header'] = [
       'title' => $this->t('Page header'),
       'column' => 'second',
@@ -157,12 +157,6 @@ class PageHeaderDisplayExtender extends DisplayExtenderPluginBase {
       'title' => $this->t('Page header'),
       'value' => $this->options['lede'] ? $this->t('Custom lede') : $this->t('No lede'),
     ];
-  }
-
-  /**
-   * Lists defaultable sections and items contained in each section.
-   */
-  public function defaultableSections(&$sections, $section = NULL) {
   }
 
   /**
@@ -201,7 +195,7 @@ class PageHeaderDisplayExtender extends DisplayExtenderPluginBase {
    * The function metatag_views_metatag_route_entity() loads the View fresh, to
    * avoid rebuilding and re-rendering it, preserve the first row tokens.
    */
-  public function setFirstRowTokens(array $first_row_tokens) {
+  public function setFirstRowTokens(array $first_row_tokens): void {
     self::$firstRowTokens[$this->view->current_display] = $first_row_tokens;
   }
 
@@ -213,7 +207,7 @@ class PageHeaderDisplayExtender extends DisplayExtenderPluginBase {
    * @param array $first_row_tokens
    *   The first row tokens.
    */
-  public static function setFirstRowTokensOnStylePlugin(ViewExecutable $view, array $first_row_tokens) {
+  public static function setFirstRowTokensOnStylePlugin(ViewExecutable $view, array $first_row_tokens): void {
     $style = $view->getStyle();
     self::getFirstRowTokensReflection($style)->setValue($style, [$first_row_tokens]);
   }
@@ -227,7 +221,7 @@ class PageHeaderDisplayExtender extends DisplayExtenderPluginBase {
    * @return array
    *   The first row tokens.
    */
-  public static function getFirstRowTokensFromStylePlugin(ViewExecutable $view) {
+  public static function getFirstRowTokensFromStylePlugin(ViewExecutable $view): array {
     $style = $view->getStyle();
     return self::getFirstRowTokensReflection($style)->getValue($style)[0] ?? [];
   }

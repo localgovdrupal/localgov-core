@@ -108,7 +108,7 @@ class PageHeaderDisplayEvent extends Event {
    * @param \Drupal\views\ViewExecutable $view
    *   The view.
    */
-  public function setView(ViewExecutable $view) {
+  public function setView(ViewExecutable $view) : void {
     $this->view = $view;
   }
 

@@ -10,7 +10,7 @@ use Drupal\localgov_core\FieldRenameHelper;
 /**
  * Implements hook_install().
  */
-function localgov_core_install() {
+function localgov_core_install(): void {
   _localgov_core_enabled_views_page_display_extender();
 }
 
@@ -106,14 +106,14 @@ function localgov_core_update_8004() {
 /**
  * Enables the views page header display extender.
  */
-function localgov_core_update_8005() {
+function localgov_core_update_8005(): void {
   _localgov_core_enabled_views_page_display_extender();
 }
 
 /**
  * Enable localgov_page_header_display_extender plugin.
  */
-function _localgov_core_enabled_views_page_display_extender() {
+function _localgov_core_enabled_views_page_display_extender(): void {
   $config = \Drupal::service('config.factory')->getEditable('views.settings');
   $display_extenders = $config->get('display_extenders') ?: [];
   $display_extenders[] = 'localgov_page_header_display_extender';
