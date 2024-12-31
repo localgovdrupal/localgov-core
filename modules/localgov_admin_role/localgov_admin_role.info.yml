@@ -4,4 +4,4 @@ package: LocalGov Drupal
 type: module
 core_version_requirement: ^10 || ^11
 dependencies:
- - localgov_core:localgov_roles
+  - localgov_core:localgov_roles
