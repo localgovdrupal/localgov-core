@@ -4,6 +4,6 @@
 
 #revision-overview-form [data-drupal-selector="edit-submit-top"] {
   position: sticky;
-  top: var(--drupal-displace-offset-top);
   z-index: 600;
+  top: var(--drupal-displace-offset-top);
 }
