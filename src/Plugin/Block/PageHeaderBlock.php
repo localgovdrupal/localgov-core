@@ -2,7 +2,6 @@
 
 namespace Drupal\localgov_core\Plugin\Block;
 
-use Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
@@ -15,6 +14,7 @@ use Drupal\localgov_core\Event\PageHeaderDisplayEvent;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -37,7 +37,7 @@ class PageHeaderBlock extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * Core event_dispatcher service.
    *
-   * @var \Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher
+   * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
    */
   protected $eventDispatcher;
 
@@ -115,7 +115,7 @@ class PageHeaderBlock extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, CurrentRouteMatch $current_route_match, ContainerAwareEventDispatcher $event_dispatcher, RequestStack $request_stack, TitleResolver $title_resolver) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, CurrentRouteMatch $current_route_match, EventDispatcherInterface $event_dispatcher, RequestStack $request_stack, TitleResolver $title_resolver) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->currentRouteMatch = $current_route_match;
