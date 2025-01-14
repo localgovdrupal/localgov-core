@@ -23,6 +23,11 @@
         "composer-exit-on-patch-failure": true,
         "patchLevel": {
             "drupal/core": "-p2"
+        },
+        "patches": {
+            "drupal/field_group": {
+                "Nullable types #3490746": "https://git.drupalcode.org/project/field_group/-/commit/23540687517e3afee192f08f1c32a40d69f2dfa7.patch"
+            }
         }
     }
 }
