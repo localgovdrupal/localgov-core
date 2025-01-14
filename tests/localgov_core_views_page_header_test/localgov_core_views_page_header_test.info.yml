@@ -1,0 +1,9 @@
+name: 'Views page header test'
+type: module
+package: Testing
+core_version_requirement: ^10 || ^11
+description: Testing module for the views page header display extender.
+dependencies:
+  - drupal:node
+  - drupal:views
+  - localgov_core:localgov_core

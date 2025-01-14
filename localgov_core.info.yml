@@ -8,6 +8,7 @@ dependencies:
   - drupal:block
   - drupal:field
   - drupal:node
+  - drupal:views
   - field_group:field_group
 
 test_dependencies:

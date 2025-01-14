@@ -3,6 +3,8 @@
 namespace Drupal\localgov_core\Event;
 
 use Drupal\Component\EventDispatcher\Event;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\views\ViewExecutable;
 
 /**
  * Event that is fired when displaying the page header.
@@ -17,6 +19,13 @@ class PageHeaderDisplayEvent extends Event {
    * @var \Drupal\Core\Entity\EntityInterface|null
    */
   protected $entity = NULL;
+
+  /**
+   * View executable associated with the current route.
+   *
+   * @var \Drupal\views\ViewExecutable|null
+   */
+  protected $view = NULL;
 
   /**
    * The page lede override.
@@ -56,7 +65,10 @@ class PageHeaderDisplayEvent extends Event {
   /**
    * {@inheritdoc}
    */
-  public function __construct($entity) {
+  public function __construct($entity = NULL) {
+    // @todo remove the $entity paramater or deprecate it.
+    // Since we should use the setters and getters.
+    // Or we can mark this class as internal?
     $this->entity = $entity;
   }
 
@@ -66,8 +78,38 @@ class PageHeaderDisplayEvent extends Event {
    * @return \Drupal\Core\Entity\EntityInterface|null
    *   The entity.
    */
-  public function getEntity() {
+  public function getEntity() : ?EntityInterface {
     return $this->entity;
+  }
+
+  /**
+   * Entity setter.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   The entity.
+   */
+  public function setEntity(EntityInterface $entity) : void {
+    $this->entity = $entity;
+  }
+
+  /**
+   * View getter.
+   *
+   * @return \Drupal\views\ViewExecutable|null
+   *   The view.
+   */
+  public function getView() : ?ViewExecutable {
+    return $this->view;
+  }
+
+  /**
+   * View setter.
+   *
+   * @param \Drupal\views\ViewExecutable $view
+   *   The view.
+   */
+  public function setView(ViewExecutable $view) : void {
+    $this->view = $view;
   }
 
   /**
