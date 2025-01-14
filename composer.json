@@ -27,6 +27,15 @@
         "patches": {
             "drupal/field_group": {
                 "Nullable types #3490746": "https://git.drupalcode.org/project/field_group/-/commit/23540687517e3afee192f08f1c32a40d69f2dfa7.patch"
+            },
+            "drupal/linkit": {
+                "Nullable types #3498223": "https://git.drupalcode.org/project/linkit/-/commit/ac89690051fbfa4e19b0e3df41e3ba628d199d2e.patch"
+            },
+            "drupal/paragraphs": {
+                "Nullable types #3492419": "https://git.drupalcode.org/project/paragraphs/-/commit/9efaadd62448fc847f9860a2066d81c3039daa07.patch"
+            },
+            "drupal/role_delegation": {
+                "Nullable types #3499682": "https://git.drupalcode.org/project/role_delegation/-/commit/f21be7a1f66de4a095c1398d9a53aa44bdad3524.patch"
             }
         }
     }
