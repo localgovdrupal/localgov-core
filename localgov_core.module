@@ -5,6 +5,7 @@
  * LocalGovDrupal Core module file.
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Installer\InstallerKernel;
 
 /**
@@ -76,4 +77,11 @@ function localgov_core_localgov_post_install(): void {
   /** @var \Drupal\localgov_core\Service\DefaultBlockInstaller $defaultBlockInstaller */
   $defaultBlockInstaller = \Drupal::service('localgov_core.default_block_installer');
   $defaultBlockInstaller->install($localgovModules);
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function localgov_core_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
+  $form['#attributes']['novalidate'] = 'novalidate';
 }
